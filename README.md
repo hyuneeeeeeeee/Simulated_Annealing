@@ -97,7 +97,7 @@ public class Main {
 
 
 
-결과
+#### 결과(전역 최적해 찾기)
 
 <img width="234" alt="캡처" src="https://user-images.githubusercontent.com/80511341/121655577-ad59f580-cad9-11eb-9e12-9aa8e39d2c51.PNG">
 
@@ -142,7 +142,7 @@ public class Main {
 
 ##### 모의담금질 기법 이용해서 가장 적합한 파라미터 값 구하기
 
-
+위의 데이터 값을 앞서 구한 코드를 이용해서 파라미터 값(a 값과 b 값)을 구하면 다음과 같다. 
 
 
 
