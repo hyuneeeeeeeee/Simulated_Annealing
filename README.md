@@ -97,7 +97,7 @@ public class Main {
 
 
 
-#### 결과(최소값 찾기)
+#### 결과
 
 <img width="234" alt="캡처" src="https://user-images.githubusercontent.com/80511341/121655577-ad59f580-cad9-11eb-9e12-9aa8e39d2c51.PNG">
 
