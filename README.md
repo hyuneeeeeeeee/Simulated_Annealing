@@ -40,7 +40,7 @@ public class Simulated_Annealing {
         double f0 = p.fit(x0);
         hist.add(f0);
 
-        for (int i=0; i<niter; i++) {
+        for (int i=0; i < niter; i++) {
             int kt = (int) t;
             for(int j=0; j<kt; j++) {
                 double x1 = r.nextDouble() * (upper - lower) + lower;
@@ -53,7 +53,7 @@ public class Simulated_Annealing {
                 } else {
                     double d = Math.sqrt(Math.abs(f1 - f0));
                     double p0 = Math.exp(-d/t);
-                    if(r.nextDouble() < 0.0001) {
+                    if(r.nextDouble() < p0) {
                         x0 = x1;
                         f0 = f1;
                         hist.add(f0);
@@ -64,6 +64,7 @@ public class Simulated_Annealing {
         }
         return x0;
     }
+}
 ```
 
 메인 함수
@@ -75,10 +76,7 @@ public class Main {
         com.company.Problem p = new com.company.Problem() {
             @Override
             public double fit(double x) {
-                return -x * x * x + 38 * x * x + 80 * x  + 26;	// 3차 함수
-                /* 
-                return -x * x * x + 38 * x * x + 80 * x  + 26;	// 4차 함수
-                */
+                return 2 *x * x * x * x - 9 * x * x * x + 4 * x * x  + 18 * x + 7;	// 4차 함수
             }
 
             @Override
@@ -93,8 +91,6 @@ public class Main {
     }
 }
 ```
-
-
 
 
 
@@ -144,4 +140,3 @@ public class Main {
 
 
 #### 성능 분석 및 결과
-
