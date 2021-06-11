@@ -6,17 +6,16 @@ public class Main {
         com.company.Problem p = new com.company.Problem() {
             @Override
             public double fit(double x) {
-                return 2 *x * x * x * x - 9 * x * x * x + 4 * x * x  + 18 * x + 7;	// 4차 함수
+                return 2 * x * x * x * x - 9 * x * x * x + 4 * x * x + 18 * x + 7;    // 4차 함수
             }
 
             @Override
             public boolean isNeighborBetter(double f0, double f1) {
-                return f0 < f1;
+                return f0 > f1;
             }
         };
-        double x = sa.solve(p, 100, 0.99, 0, 0, 31);
-        System.out.println(x);
-        System.out.println(p.fit(x));
-        System.out.println(sa.hist);
+        double x = sa.solve(p, 100, 0.99, 0, -5, 31);
+        System.out.println("x 좌표 : " + x + "");
+        System.out.println("y 좌표 : " + p.fit(x) + "");
     }
 }
