@@ -71,12 +71,14 @@ public class Simulated_Annealing {
 ```java
 public class Main {
     public static void main(String[] args) {
-        Simulated_Annealing sa = new Simulated_Annealing(10);
+        Simulated_Annealing sa = new Simulated_Annealing(100);
         com.company.Problem p = new com.company.Problem() {
             @Override
             public double fit(double x) {
-                return -x * x + 38 * x + 80;
-                // x=19 , f(x)=441
+                return -x * x * x + 38 * x * x + 80 * x  + 26;	// 3차 함수
+                /* 
+                return -x * x * x + 38 * x * x + 80 * x  + 26;	// 4차 함수
+                */
             }
 
             @Override
