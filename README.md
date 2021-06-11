@@ -76,18 +76,17 @@ public class Main {
         com.company.Problem p = new com.company.Problem() {
             @Override
             public double fit(double x) {
-                return 2 *x * x * x * x - 9 * x * x * x + 4 * x * x  + 18 * x + 7;	// 4차 함수
+                return 2 * x * x * x * x - 9 * x * x * x + 4 * x * x + 18 * x + 7;    // 4차 함수
             }
 
             @Override
             public boolean isNeighborBetter(double f0, double f1) {
-                return f0 < f1;
+                return f0 > f1;
             }
         };
-        double x = sa.solve(p, 100, 0.99, 0, 0, 31);
-        System.out.println(x);
-        System.out.println(p.fit(x));
-        System.out.println(sa.hist);
+        double x = sa.solve(p, 100, 0.99, 0, -5, 31);
+        System.out.println("x 좌표 : " + x + "");
+        System.out.println("y 좌표 : " + p.fit(x) + "");
     }
 }
 ```
@@ -100,7 +99,7 @@ public class Main {
 
 결과
 
-<img width="1066" alt="캡처" src="https://user-images.githubusercontent.com/80511341/121652020-340cd380-cad6-11eb-866b-2a1ad6c92b81.PNG">
+<img width="234" alt="캡처" src="https://user-images.githubusercontent.com/80511341/121655577-ad59f580-cad9-11eb-9e12-9aa8e39d2c51.PNG">
 
 ## 모의 담금질 기법 이용하기
 
