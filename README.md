@@ -3,37 +3,96 @@
 
 > 높은 온도에서 액체 상태인 물질이 온도가 점차 낮아지면서 결정체로 변하는 과정을 모방한 해 탐색 알고리즘
 
-\1. 임의의 후보해 s를 선택한다.
+#### 코드 구현
 
-\2. 초기 T를 정한다.
+Problem 인터페이스
 
-\3. repeat
+```java
+public interface Problem {
+    double fit(double x);
+    boolean isNeighborBetter(double f0, double f1);
+}
+```
 
-\4.  for i = 1 to kT {  // kT는 T에서의 for-루프 반복 횟수이다.
+Simulated_Annealing 클래스
 
-\5.     s의 이웃해 중에서 랜덤하게 하나의 해 s'를 선택한다.
+```java
+import java.util.ArrayList;
+import java.util.Random;
 
-\6.     d = (s'의 값) - (s의 값)
+public class Simulated_Annealing {
+    private int niter;
+    public ArrayList<Double> hist;
 
-\7.     if (d < 0)    // 이웃해인 s'가 더 우수한 경우
+    public Simulated_Annealing(int niter) {
+        this.niter = niter;
+        hist = new ArrayList<>();
+    }
 
-\8.       s ← s'
+    public double solve(Problem p, double t, double a, double lower, double upper) {
+        Random r = new Random();
+        double x0 = r.nextDouble() * (upper - lower) + lower;
+        return solve(p, t, a, x0, lower, upper);
+    }
 
-\9.     else       // s'가 s보다 우수하지 않은 경우
+    public double solve(Problem p, double t, double a, double x0, double lower, double upper) {
+        Random r = new Random();
+        double f0 = p.fit(x0);
+        hist.add(f0);
 
-\10.      q ← (0,1) 사이에서 랜덤하게 선택한 수
+        for (int i=0; i<niter; i++) {
+            int kt = (int) t;
+            for(int j=0; j<kt; j++) {
+                double x1 = r.nextDouble() * (upper - lower) + lower;
+                double f1 = p.fit(x1);
 
-\11.      if ( q < p ) s ← s'  // p는 자유롭게 탐색할 확률이다.
+                if(p.isNeighborBetter(f0, f1)) {
+                    x0 = x1;
+                    f0 = f1;
+                    hist.add(f0);
+                } else {
+                    double d = Math.sqrt(Math.abs(f1 - f0));
+                    double p0 = Math.exp(-d/t);
+                    if(r.nextDouble() < 0.0001) {
+                        x0 = x1;
+                        f0 = f1;
+                        hist.add(f0);
+                    }
+                }
+            }
+            t *= a;
+        }
+        return x0;
+    }
+```
 
-​     }
+메인 함수
 
-\12.  T ← aT // 1보다 작은 상수 a 를 T에 곱하여 새로운 T를 계산
+```java
+public class Main {
+    public static void main(String[] args) {
+        Simulated_Annealing sa = new Simulated_Annealing(10);
+        com.company.Problem p = new com.company.Problem() {
+            @Override
+            public double fit(double x) {
+                return -x * x + 38 * x + 80;
+                // x=19 , f(x)=441
+            }
 
-\13. until (종료 조건이 만족될 때까지)
+            @Override
+            public boolean isNeighborBetter(double f0, double f1) {
+                return f0 < f1;
+            }
+        };
+        double x = sa.solve(p, 100, 0.99, 0, 0, 31);
+        System.out.println(x);
+        System.out.println(p.fit(x));
+        System.out.println(sa.hist);
+    }
+}
+```
 
-\14. return s
 
-3~4차 함수의 전역 최적점 찾기
 
 
 
