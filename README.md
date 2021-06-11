@@ -81,7 +81,7 @@ public class Main {
 
             @Override
             public boolean isNeighborBetter(double f0, double f1) {
-                return f0 > f1;
+                return f0 > f1;	// 최소값을 찾기 위해
             }
         };
         double x = sa.solve(p, 100, 0.99, 0, -5, 31);
