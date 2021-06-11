@@ -98,7 +98,9 @@ public class Main {
 
 
 
+결과
 
+<img width="1066" alt="캡처" src="https://user-images.githubusercontent.com/80511341/121652020-340cd380-cad6-11eb-866b-2a1ad6c92b81.PNG">
 
 ## 모의 담금질 기법 이용하기
 
