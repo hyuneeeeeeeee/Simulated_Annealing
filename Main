@@ -6,7 +6,7 @@ public class Main {
         com.company.Problem p = new com.company.Problem() {
             @Override
             public double fit(double x) {
-                return -x * x * x + 38 * x * x + 80 * x  + 26;  // 3차함수
+                return 2 *x * x * x * x - 9 * x * x * x + 4 * x * x  + 18 * x + 7;	// 4차 함수
             }
 
             @Override
