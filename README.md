@@ -92,6 +92,12 @@ public class Main {
 }
 ```
 
+4차 함수 그래프 (2x^4-9x^3+4x^2+18x+7)
+
+<img width="492" alt="KakaoTalk_20210611_165022854" src="https://user-images.githubusercontent.com/80511341/121651413-8ef1fb00-cad5-11eb-9624-2114bb3fa9c9.png">
+
+
+
 
 
 ## 모의 담금질 기법 이용하기
@@ -140,3 +146,4 @@ public class Main {
 
 
 #### 성능 분석 및 결과
+
